@@ -3,6 +3,8 @@ import axios from 'axios';
 import './style_card.css'
 import { Card , Button } from 'react-bootstrap';
 import key from '../../key/ApiKey'
+import ButtonCard from './ButtonCard'
+
 //main component card_list documents
 class CardList extends React.Component {
     constructor(props) {
@@ -40,6 +42,7 @@ class CardList extends React.Component {
         const http               = `https://content.guardianapis.com`;
         const url                = `${http}/search?q=${global_search}&api-key=${api_key}`
         //set input search value and send to query in api function
+        setTimeout(() => {},2000);
         this.GetDataFromAPI(global_search , url)
     }
     //watch input_tag and find data in old data form data[] and set item to filterdata[]
@@ -110,7 +113,7 @@ class CardList extends React.Component {
                             <input
                                 placeholder="Search for globel"
                                 value={this.state.globel_search}
-                                onChange={this.SearcHGlobal}
+                                onChange={this.SearcHGlobal }
                             />
                         </form>
                     </div>   
@@ -164,8 +167,10 @@ function CardComponents (props){
                         <div className="col-sm-6">
                             <p>{ props.card.webPublicationDate }</p>
                         </div> 
-                        <div className="col-sm-6">                                                         
+                        <div className="col-sm-6">   
+                            <div className="row">                                                 
                                 <ButtonCard card={props.card}/>
+                            </div>     
                         </div>
                 </div>
             </Card.Footer>
@@ -173,28 +178,5 @@ function CardComponents (props){
     )
 }
 
-//functionless button in card components 
-class ButtonCard extends React.Component {
-    handleDataonclick(apiUrl){
-        const linkurl   = apiUrl           
-        const api_key   = key();
-        const Url      = `${linkurl}?show-sections=true&api-key=${api_key}`
-        
-        const res = axios.get(`${Url}`).then(res => {
-            console.log(res)
-        })
-       
-    }
-
-
-    render(){
-        return (
-            <div className="row">
-                <Button variant="danger" href={this.props.card.webUrl} className="mr-1 mb-1">Go to website</Button>
-                <Button variant="info" className="mr-1 mb-1" onClick={(e) => this.handleDataonclick(this.props.card.apiUrl)} >Read more</Button>
-            </div>
-        )    
-    }
-}
 
 export default CardList ;

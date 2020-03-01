@@ -3,9 +3,9 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Index  from './components/Home';
-import About  from './components/About';
-import Navbar from './components/Navbar';
+import Index  from './ui/Home';
+import About  from './ui/About';
+import Navbar from './ui/Navbar';
 
 
 class App extends React.Component {

@@ -1,24 +1,29 @@
-import React from 'react'
-import Card  from '../components/home/Card'
+import React          from 'react'
+import Card           from '../components/home/Card'
+import Container      from '@material-ui/core/Container';
+import { makeStyles } from '@material-ui/core/styles';
 
-class Index extends React.Component {
-	render() {
+const useStyles = makeStyles(theme => ({
+  content: {
+    marginTop: 100,
+  },
+
+}));
+
+function Index (){
+  const classes = useStyles();
+
 		return (
             <React.Fragment>
-                <div className="content mt-5">
-                    <div className="container">
-                      <div className="text_title mb-4">
-                        <h1>ALL LIST</h1>
-                      </div>
-              
-                      <div className="card_main">    
+                <div className={ classes.content} >
+                      <div className="card_main_content mt-5"> 
+                        <Container>   
                           <Card/>
+                        </Container>
                       </div>
-                    </div>
                 </div>
             </React.Fragment>
         )
-	}
 }
 
-export default Index
+export default Index;

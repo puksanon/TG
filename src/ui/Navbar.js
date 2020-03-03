@@ -1,28 +1,33 @@
-import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import React          from 'react';
+
+//material
+import AppBar         from '@material-ui/core/AppBar';
+import Toolbar        from '@material-ui/core/Toolbar';
+import Typography     from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
+  navbar: {
+    flexGrow  : 1,
+    position  : 'fixed',
+    top       : 0,
+    width     : '100%',
   },
   title: {
-    flexGrow: 1,
-    display: 'none',
+    flexGrow    : 1,
+    display     : 'none',
     [theme.breakpoints.up('sm')]: {
-      display: 'block',
+      display   : 'block',
     },
   },
 }));
 
-export default function SearchAppBar() {
+function SearchAppBar() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
+    <div className={classes.navbar}>
+      <AppBar>
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap>
             The Guardian 
@@ -32,3 +37,5 @@ export default function SearchAppBar() {
     </div>
   );
 }
+
+export default SearchAppBar;

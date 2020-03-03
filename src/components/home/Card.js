@@ -19,7 +19,7 @@ import ButtonCard       from './ButtonCard';
 import PropTypes from 'prop-types';
 
 //stylesheet
-import './style_card.css';
+import '../css/style_card.css';
 
 //main component card_list documents
 class CardList extends React.Component {

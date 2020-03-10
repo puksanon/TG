@@ -17,8 +17,13 @@
 .btn{
     width: 100%;
     height: 56px;
+    max-width: 510px;
 }
 
 .card_footer{
     margin: 10px;
+}
+
+.dialog{
+    min-width: 700px;
 }

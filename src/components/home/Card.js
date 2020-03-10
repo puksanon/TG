@@ -1,5 +1,6 @@
 import React            from 'react';
 import axios            from 'axios';
+import _                from "lodash";
 
 //api-key 
 import key              from '../../key/ApiKey';
@@ -26,16 +27,17 @@ class CardList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            input_search_value: "",
-            data: [],
-            filteredData: [],
-            sort : true
+            input_search_value  : "",
+            data                : [],
+            filteredData        : [],
+            sort                : true
         };
     };
     //sort date time 
     custom_sort_new(a, b) {
         return new Date(a.webPublicationDate).getTime() - new Date(b.webPublicationDate).getTime();
     };
+
     custom_sort_old(a, b) {
         return new Date(b.webPublicationDate).getTime() - new Date(a.webPublicationDate).getTime();
     };
@@ -51,30 +53,42 @@ class CardList extends React.Component {
             this.setState({ filteredData : sortdate })
         }
     };
+    
 
     //handle data search globel in guardien
-    SearcHGlobal = e => {
-        const global_search      =  e.target.value;
-        const api_key            =  key();
-        const http               = `https://content.guardianapis.com`;
-        const url                = `${http}/search?q=${global_search}&api-key=${api_key}`
-        //set input search value and send to query in api function
-        this.GetDataFromAPI(global_search , url)
+    SearcHGlobal = (e) => {
+        e.persist();
+
+        if (!this.debouncedFn) {
+            this.debouncedFn =  _.debounce(() => {
+               const global_search      =  e.target.value;
+               const api_key            =  key();
+               const http               = `https://content.guardianapis.com`;
+               const url                = `${http}/search?q=${global_search}&api-key=${api_key}`
+              this.GetDataFromAPI(global_search , url);
+            }, 500);
+          }
+        // //set input search value and send to query in api function
+        this.debouncedFn();
     };
 
     //watch input_tag and find data in old data form data[] and set item to filterdata[]
-    handleInputChange = event => {
-        const input_search_value = event.target.value;
-        this.setState(prevState => {
-            const filteredData = prevState.data.filter(element => {
-                return element.webTitle.toLowerCase().includes(input_search_value.toLowerCase());
-            });
-        
-            return {
-                input_search_value,
-                filteredData
-                };
-            });
+    handleInputChange = (event) => {
+        event.persist();
+        this.debouncedFn =  _.debounce(() => {
+            const input_search_value = event.target.value;
+            this.setState(prevState => {
+                const filteredData = prevState.data.filter(element => {
+                    return element.webTitle.toLowerCase().includes(input_search_value.toLowerCase());
+                });
+            
+                return {
+                    input_search_value,
+                    filteredData
+                    };
+                });
+        }, 500);
+        this.debouncedFn();
     };
 
     //fetch data from api / searching
@@ -131,31 +145,31 @@ class CardList extends React.Component {
             <Grid className="searchForm mt-5">
                 <Grid className="search_input" container>
                     <Grid item xs={12} sm={5}>
-                        <form className=" mr-2 mb-2">
+                        <form className="input m-2">
                             <TextField 
                                 className="text_input"
                                 id="outlined-basic" 
                                 label="Search For Global" 
                                 variant="outlined"
                                 placeholder="Input your Keyword"
-                                onChange={this.SearcHGlobal}
+                                onChange={this.SearcHGlobal }
                             />
                         </form>
                     </Grid>   
                     <Grid item xs={12} sm={5} >
-                        <form className="mr-2 mb-2">
+                        <form className="input m-2">
                             <TextField 
                                 id="outlined-basic" 
                                 className="text_input"
-                                label="Input text Title" 
+                                label="Search for List Title" 
                                 variant="outlined"
-                                placeholder="Search for tltle"
+                                placeholder="Input Title Name"
                                 onChange={this.handleInputChange}
                             />
                         </form>
                     </Grid>   
                     <Grid  item xs={12} sm={2}>
-                        <Button className="btn mr-2 mb-2" variant="outlined" color="primary" onClick={(e) => this.SortData()}>Sort By Date</Button>
+                        <Button className="btn m-2"  variant="outlined" color="primary" onClick={(e) => this.SortData()}>Sort By Date</Button>
                     </Grid>
                 </Grid>   
 

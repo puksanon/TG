@@ -12,6 +12,7 @@ import IconButton           from '@material-ui/core/IconButton';
 import CloseIcon            from '@material-ui/icons/Close';
 import Typography           from '@material-ui/core/Typography';
 
+import '../css/style_card.css'
 
 const styles = theme => ({
     root: {
@@ -25,14 +26,14 @@ const styles = theme => ({
       color: theme.palette.grey[500],
     },
     card_dialog : {
-      width : 600,
+      minWidth : 700,
     }
 });
   
 const DialogTitle = withStyles(styles)(props => {
-    const { children, classes, onClose, ...other } = props;
+    const { children, classes, onClose} = props;
     return (
-        <MuiDialogTitle disableTypography className={classes.root} {...other}>
+        <MuiDialogTitle disableTypography className={classes.root} >
         <Typography variant="h6">{children}</Typography>
         {onClose ? (
             <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
@@ -75,7 +76,7 @@ class DialogCard extends React.Component{
     render(){
         return (
             <div>
-                <Button size="medium" variant="outlined" color="primary" onClick={this.handleClickOpen}>Read More</Button>
+                <Button size="medium" variant="outlined" color="primary" onClick={this.handleClickOpen} >Read More</Button>
                 <div className="dialog_content">
                     <Dialog onClose={this.handleClose}  aria-labelledby="customized-dialog-title" open={this.state.open}>
                         <DialogTitle id="customized-dialog-title" onClose={this.handleClose}>

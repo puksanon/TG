@@ -1,0 +1,47 @@
+time estimation
+
+    ###Learn.
+
+    Use in project 
+
+        + read and Understand requirement                              : 1 Hr.
+        + Design UI/UX                                                 : 2 Hr.
+        + Read and Understand Basic to start React.js in React Docs    : 8-12 Hr.
+        + Read and Understand MATERIAL-UI for UI                       : 1.5 Hr.
+        + Read and Understand React Prop-type                          : 30 Min.
+        + Read and Understand lodash (Basic)                           : 30 Min.
+
+    Don't Use
+
+        + Read and Understand React Hook                               : 2 Hr.
+        + Read Reactive Programming (RxJs)                             : 6 Hr.
+
+
+    Start Project 
+        + Coding                                                       : 8 Hr.
+        + Test and Config                                              : 2 Hr.
+        + Deploy ( Heroku )                                            : 10 Min.
+        + Production Test                                              : 20 Min.
+
+    commit Description
+        first commit    - Commits on Feb 28, 2020
+        Last Commit     - Commits on Mar 16, 2020
+
+------------------------------------------------------------------------------------------------
+
+##Description 
+
+    **overview
+
+    เรียนพี่ๆ 7 peak ตามที่โจทย์กำหนดมานั้น ต้องขออนุญาตบอกก่อนว่า project นี้เป็นรอบเเรกที่ผมขึ้นโครงการด้วย react เลย
+    ผมได้ทำการอ่าน requirement เเละสรุปออกมาเป็น project อย่าที่เห็น ต้องกราบขออภัยที่ส่งงานช้า คือผมทำเสร็จตั้งเเต่ประมาณ 
+    2-3 วันหลังจากเริ่มโครงการในวันที่ 28 เเต่ยังไม่มั่นใจว่ามันจะออกมาดูดีไหม เพราะบาง func ผมไม่ได้ใช้ lib เข้ามาช่วยเช่นการ
+    เรียงเวลา (sort) เเต่ผมเขียนออกมาเอง ทำให้บาง fun อาจจะดูรกๆ เเละไม่ค่อยเป็น oop สักเท่าไหร่นัก ต้องกราบขออภัยล่วงหน้า
+    ถ้า code ดูไม่ clean นักทั้งนี้ผมได้เขียน commit state ไว้เเล้ว หวังว่าจะเป็นประโยชน์ไม่มากก็น้อย เเละจะปรับปรุงให้ดีขึ้นยิ่งกว่านี้ถ้ามีโอกาส
+    ได้ฝึกงานกับทางพี่ๆ 7peak ทุกๆท่าน เเละจะพยายามมากยิ่งขึ้นให้มากกว่านี้ครับ ขอบคุณครับ
+
+     GitHub :  https://github.com/puksanon/TG
+     Heroku :  https://theguardian.herokuapp.com
+
+
+

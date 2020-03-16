@@ -54,7 +54,6 @@ class CardList extends React.Component {
         }
     };
     
-
     //handle data search globel in guardien
     SearcHGlobal = (e) => {
         e.persist();
@@ -80,8 +79,7 @@ class CardList extends React.Component {
             this.setState(prevState => {
                 const filteredData = prevState.data.filter(element => {
                     return element.webTitle.toLowerCase().includes(input_search_value.toLowerCase());
-                });
-            
+                }); 
                 return {
                     input_search_value,
                     filteredData
@@ -95,12 +93,11 @@ class CardList extends React.Component {
     async GetDataFromAPI(global_search, url){
         const input_search_value =  global_search;
         const api_key            =  key();
-        const http               = `https://content.guardianapis.com`;
         const Url                =  url;
 
         if (!input_search_value){
             // eslint-disable-next-line
-            const response = await axios.get(`${http}/search?api-key=${api_key}`)
+            const response = await axios.get(`https://content.guardianapis.com/search?api-key=${api_key}`)
             .then(data  => {
                 const get_data = data.data.response.results;
                 const { input_search_value } = this.state;
